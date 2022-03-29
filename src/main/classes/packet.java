@@ -1,4 +1,7 @@
-package main;
+package main.classes;
+
+import main.package_Category;
+import main.package_state;
 
 public class packet {
     String id;
