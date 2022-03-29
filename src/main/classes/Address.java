@@ -1,6 +1,6 @@
 package main.classes;
 
-public class address {
+public class Address {
     String firstname;
     String lastname;
     String zipcode;
@@ -8,7 +8,7 @@ public class address {
     String street;
     String houseNumber;
 
-    public address(String firstname, String lastname, String zipcode, String city, String street, String houseNumber) {
+    public Address(String firstname, String lastname, String zipcode, String city, String street, String houseNumber) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.zipcode = zipcode;

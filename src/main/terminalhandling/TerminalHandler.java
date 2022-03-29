@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 
 public class TerminalHandler {
 
+    private static final String SEPERATOR = " ";
     private Thread thread;
 
     public void terminalHandler() {
@@ -14,7 +15,9 @@ public class TerminalHandler {
                 try {
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
                     String line = bufferedReader.readLine();
-                    System.out.println(line);
+
+                    CommandSplitter commandSplitter = new CommandSplitter(line, SEPERATOR);
+                    // TODO
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
