@@ -17,7 +17,9 @@ public class TerminalHandler {
                     String line = bufferedReader.readLine();
 
                     CommandSplitter commandSplitter = new CommandSplitter(line, SEPERATOR);
-                    // TODO
+                    String[] command = commandSplitter.getSplittedCommand();
+                    new CommandParser().execute(command);
+
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }

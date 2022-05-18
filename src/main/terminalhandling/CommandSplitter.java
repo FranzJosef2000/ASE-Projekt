@@ -5,7 +5,10 @@ public class CommandSplitter {
     private String seperator;
 
     public CommandSplitter(String command, String seperator) {
-        this.splittedCommand = command.split(seperator);
         this.seperator = seperator;
+        this.splittedCommand = command.split(this.seperator);
+    }
+    public String[] getSplittedCommand(){
+        return this.splittedCommand;
     }
 }
