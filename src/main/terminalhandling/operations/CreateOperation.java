@@ -3,8 +3,6 @@ package main.terminalhandling.operations;
 import java.util.Scanner;
 
 public class CreateOperation {
-    private int POSITION = 1;
-
     Scanner scanner = new Scanner(System.in);
 
     public CreateOperation(String[] command) {
