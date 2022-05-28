@@ -25,7 +25,7 @@ public class CommandParser {
             new GetOperation(command, packetEventsImpl);
         }
         else if (command[POSITION].equalsIgnoreCase("HELP")){
-            new HelpOperation(packetEventsImpl);
+            new HelpOperation(command, packetEventsImpl);
         }
         else{
             System.out.println("Fehlerhafte eingabe!");

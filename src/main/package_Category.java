@@ -18,5 +18,15 @@ public enum package_Category {
         this.price = price;
     }
 
+    public String getDescription(){
+        return description;
+    }
+    public String getVolumeDescription(){
+        return volumeDescription;
+    }
+    public double getPrice(){
+        return price;
+    }
+
 
 }
