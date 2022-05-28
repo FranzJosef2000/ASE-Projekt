@@ -1,8 +1,11 @@
 package main.repos;
 
+import main.classes.Address;
 import main.classes.Packet;
+import main.package_Category;
 import main.package_state;
 import main.repos.returns.PacketReturn;
+import main.tools.TrackingnumberGenerator;
 
 import java.util.ArrayList;
 
@@ -13,9 +16,9 @@ public class PacketRepository implements PacketRepo {
     packetMockup();
     }
     private void packetMockup(){
-        //packetRepository.add(new Packet("IDTEST123","","","",""));
-        //packetRepository.add(new Packet("IDTEST456","","","",""));
-        //packetRepository.add(new Packet("IDTEST789","","","",""));
+        Address adress = new Address("","","","","","");
+        packetRepository.add(new Packet("cec70e16-5a5e-4708-8ada-c57f0dc1519e",package_Category.PARCEL_M,adress,adress,package_state.ANGEKÜNDIGT));
+        packetRepository.add(new Packet("cec70e16-5a5e-4708-8ada-c57f0dc1518e",package_Category.PARCEL_M,adress,adress,package_state.IN_ZUSTELLUNG));
     }
     public ArrayList returnPacket(){
         return packetRepository;
@@ -33,12 +36,27 @@ public class PacketRepository implements PacketRepo {
     }
 
     @Override
-    public PacketReturn createPacket() {
-        return null;
+    public PacketReturn createPacket(package_Category packageCategory, Address sender, Address receiver) {
+        String trackingnumber = TrackingnumberGenerator.generateTrackingNumber();
+        System.out.println(trackingnumber);
+        Packet createdPacket = new Packet(trackingnumber, packageCategory, sender, receiver, package_state.ANGEKÜNDIGT );
+        packetRepository.add(createdPacket);
+        Packet packet = packetRepository.stream().filter(item->trackingnumber.equals(item.getId())).findFirst().orElse(null);
+        if (packet != null){
+            return new PacketReturn(true, packet);
+        } else{
+            return new PacketReturn(false,null);
+        }
     }
 
     @Override
-    public PacketReturn postPacket(String trackingnumber, package_state state) {
-        return null;
+    public PacketReturn postPacket(String trackingNumber, package_state state) {
+        Packet packet = getPacketByTrackinNumber(trackingNumber).getPacket();
+        packet.changeState(state);
+        if (packet.getState().equals(state)){
+            return new PacketReturn(true, packet);
+        } else{
+            return new PacketReturn(false,null);
+        }
     }
 }

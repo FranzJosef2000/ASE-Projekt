@@ -1,7 +1,15 @@
 package main.terminalhandling.operations;
 
+import main.interfaces.PacketEvents;
+import main.interfaces.PacketEventsImpl;
+
 public class HelpOperation {
-    public HelpOperation() {
+    private PacketEvents packetEvents;
+
+    public HelpOperation(PacketEventsImpl packetEventsImpl) {
+        super();
+        this.packetEvents = packetEventsImpl;
+
         System.out.println("Hilfe");
         System.out.println("--------------------------------");
         System.out.println("Packet aufgeben:");

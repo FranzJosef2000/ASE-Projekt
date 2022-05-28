@@ -20,4 +20,12 @@ public class Packet {
     public String getId(){
         return this.id;
     }
+
+    public void changeState(package_state state){
+        this.state = state;
+    }
+
+    public package_state getState(){
+        return this.state;
+    }
 }

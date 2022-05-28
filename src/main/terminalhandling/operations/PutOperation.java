@@ -1,8 +1,16 @@
 package main.terminalhandling.operations;
 
 
+import main.interfaces.PacketEvents;
+import main.interfaces.PacketEventsImpl;
+
 public class PutOperation {
-    public PutOperation(String[] command) {
+    private PacketEvents packetEvents;
+
+    public PutOperation(String[] command, PacketEventsImpl packetEventsImpl) {
+        super();
+        this.packetEvents = packetEventsImpl;
+
         if(command[1].equalsIgnoreCase("PACKAGE")){
             if (command[2].length() == 8){
                 String packageNumber = command[2];

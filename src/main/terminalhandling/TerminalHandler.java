@@ -1,5 +1,7 @@
 package main.terminalhandling;
 
+import main.interfaces.PacketEventsImpl;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,7 +11,7 @@ public class TerminalHandler {
     private static final String SEPERATOR = " ";
     private Thread thread;
 
-    public void terminalHandler() {
+    public void terminalHandler(PacketEventsImpl packetEventsImpl) {
         thread = new Thread(() -> {
             while (!Thread.interrupted()) {
                 try {
@@ -18,7 +20,7 @@ public class TerminalHandler {
 
                     CommandSplitter commandSplitter = new CommandSplitter(line, SEPERATOR);
                     String[] command = commandSplitter.getSplittedCommand();
-                    new CommandParser().execute(command);
+                    new CommandParser().execute(command,packetEventsImpl);
 
                 } catch (IOException ioException) {
                     ioException.printStackTrace();

@@ -1,15 +1,21 @@
 package main.terminalhandling.operations;
 
-import java.util.Scanner;
+import main.interfaces.PacketEvents;
+import main.interfaces.PacketEventsImpl;
 
 public class GetOperation {
+    private PacketEvents packetEvents;
 
-    public GetOperation(String[] command) {
+
+    public GetOperation(String[] command, PacketEventsImpl packetEventsImpl) {
+        super();
+        this.packetEvents = packetEventsImpl;
+
         if(command[1].equalsIgnoreCase("PACKAGE")){
-            if (command[2].length() == 8)
+            if (command[2].length() == 36)
             {
                 String packageNumber = command[2];
-                System.out.println("Get Interface");
+                packetEvents.getPacket(packageNumber);
             }
             else {
                 System.out.println("Fehlerhafte Eingabe");

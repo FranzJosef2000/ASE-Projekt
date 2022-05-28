@@ -1,10 +1,12 @@
 package main.interfaces;
 
+import main.classes.Address;
+import main.package_Category;
 import main.package_state;
 
 public interface PacketEvents {
 
-    public String getPacket(String trackingNumber);
-    public String createPacket();
-    public String postPacket(String trackingNumber,package_state state);
+    public void getPacket(String trackingNumber);
+    public void createPacket(package_Category packageCategory, Address sender, Address receiver);
+    public void changeStatus(String trackingNumber, package_state state);
 }

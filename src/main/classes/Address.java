@@ -16,4 +16,28 @@ public class Address {
         this.street = street;
         this.houseNumber = houseNumber;
     }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getHouseNumber() {
+        return houseNumber;
+    }
 }

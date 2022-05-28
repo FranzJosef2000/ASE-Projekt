@@ -1,5 +1,7 @@
 package main.interfaces;
 
+import main.classes.Address;
+import main.package_Category;
 import main.package_state;
 import main.repos.PacketRepo;
 import main.repos.returns.PacketReturn;
@@ -12,29 +14,36 @@ public class PacketEventsImpl implements PacketEvents {
     }
 
     @Override
-    public String getPacket(String trackingNumber) {
+    public void getPacket(String trackingNumber) {
         PacketReturn packetReturn = packetRepo.getPacketByTrackinNumber(trackingNumber);
         if(packetReturn.isSuccessful()){
-            return null;
+            System.out.println("Paket wurde gefunden!");
+            System.out.println("Paketstatus: "+packetReturn.getPacket().getState());
         }
-        return null;
+        else {
+            System.out.println("Paket wurde nicht gefunden!");
+        }
     }
 
     @Override
-    public String createPacket() {
-        PacketReturn packetReturn = packetRepo.createPacket();
+    public void createPacket(package_Category packageCategory, Address sender, Address receiver) {
+        PacketReturn packetReturn = packetRepo.createPacket(packageCategory, sender, receiver);
         if (packetReturn.isSuccessful()){
-            return null;
+            System.out.println("Paket wurde erfolgreich aufgegeben!");
         }
-        return null;
+        else {
+            System.out.println("Paket konnte nicht aufgegeben werden!");
+        }
     }
 
     @Override
-    public String postPacket(String trackingnumber,package_state state) {
+    public void changeStatus(String trackingnumber, package_state state) {
         PacketReturn packetReturn = packetRepo.postPacket(trackingnumber,state);
         if(packetReturn.isSuccessful()){
-            return null;
+            System.out.println("Paketstatus wurde erfolgreich geändert!");
         }
-        return null;
+        else {
+            System.out.println("Paket status konnte nicht geändert werden!");
+        }
     }
 }

@@ -1,5 +1,6 @@
 package main.terminalhandling;
 
+import main.interfaces.PacketEventsImpl;
 import main.terminalhandling.operations.CreateOperation;
 import main.terminalhandling.operations.GetOperation;
 import main.terminalhandling.operations.HelpOperation;
@@ -12,18 +13,19 @@ public class CommandParser {
     private int POSITION = 0;
     public CommandParser() {}
 
-    public void execute(String[] command){
+    public void execute(String[] command, PacketEventsImpl packetEventsImpl){
         if (command[POSITION].equalsIgnoreCase("CREATE")){
-            new CreateOperation(command);
+            new CreateOperation(command, packetEventsImpl);
+
         }
         else if (command[POSITION].equalsIgnoreCase("PUT")){
-            new PutOperation(command);
+            new PutOperation(command, packetEventsImpl);
         }
         else if (command[POSITION].equalsIgnoreCase("GET")){
-            new GetOperation(command);
+            new GetOperation(command, packetEventsImpl);
         }
         else if (command[POSITION].equalsIgnoreCase("HELP")){
-            new HelpOperation();
+            new HelpOperation(packetEventsImpl);
         }
         else{
             System.out.println("Fehlerhafte eingabe!");
