@@ -2,7 +2,6 @@ package main.interfaces;
 
 import main.classes.Address;
 import main.package_Category;
-import main.package_state;
 import main.repos.PacketRepo;
 import main.repos.returns.PacketReturn;
 
@@ -38,7 +37,7 @@ public class PacketEventsImpl implements PacketEvents {
 
     @Override
     public void changeStatus(String trackingnumber) {
-        PacketReturn packetReturn = packetRepo.postPacket(trackingnumber);
+        PacketReturn packetReturn = packetRepo.putPacket(trackingnumber);
         if(packetReturn.isSuccessful()){
             System.out.println("Paketstatus wurde erfolgreich geändert!");
         }

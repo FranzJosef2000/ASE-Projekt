@@ -9,5 +9,5 @@ public interface PacketRepo {
 
     public PacketReturn getPacketByTrackinNumber(String trackingnumber);
     public PacketReturn createPacket(package_Category packageCategory, Address sender, Address receiver);
-    public PacketReturn postPacket(String trackingnumber);
+    public PacketReturn putPacket(String trackingnumber);
 }

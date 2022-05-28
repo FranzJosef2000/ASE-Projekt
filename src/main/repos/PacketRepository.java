@@ -50,7 +50,7 @@ public class PacketRepository implements PacketRepo {
     }
 
     @Override
-    public PacketReturn postPacket(String trackingNumber) {
+    public PacketReturn putPacket(String trackingNumber) {
         Packet packet = getPacketByTrackinNumber(trackingNumber).getPacket();
         package_state formerState = packet.getState();
         packet.changeState();
