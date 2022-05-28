@@ -15,14 +15,14 @@ public class CommandParser {
     public CommandParser() {}
 
     public void execute(String[] command, PacketEventsImpl packetEventsImpl, EmployeeEventsImpl employeeEventsImpl){
-        if (command[POSITION].equalsIgnoreCase("CREATE")){
+        if (command[POSITION].equalsIgnoreCase("CREATE") && command.length==3){
             new CreateOperation(command, packetEventsImpl);
 
         }
-        else if (command[POSITION].equalsIgnoreCase("PUT")){
+        else if (command[POSITION].equalsIgnoreCase("PUT") && command.length==3){
             new PutOperation(command, packetEventsImpl, employeeEventsImpl);
         }
-        else if (command[POSITION].equalsIgnoreCase("GET")){
+        else if (command[POSITION].equalsIgnoreCase("GET") && command.length==3){
             new GetOperation(command, packetEventsImpl);
         }
         else if (command[POSITION].equalsIgnoreCase("HELP")){
@@ -30,6 +30,7 @@ public class CommandParser {
         }
         else{
             System.out.println("Fehlerhafte eingabe!");
+            new HelpOperation(command, packetEventsImpl);
         }
     }
 }
