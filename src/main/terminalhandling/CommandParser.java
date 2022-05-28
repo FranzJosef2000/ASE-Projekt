@@ -1,5 +1,6 @@
 package main.terminalhandling;
 
+import main.interfaces.EmployeeEventsImpl;
 import main.interfaces.PacketEventsImpl;
 import main.terminalhandling.operations.CreateOperation;
 import main.terminalhandling.operations.GetOperation;
@@ -13,13 +14,13 @@ public class CommandParser {
     private int POSITION = 0;
     public CommandParser() {}
 
-    public void execute(String[] command, PacketEventsImpl packetEventsImpl){
+    public void execute(String[] command, PacketEventsImpl packetEventsImpl, EmployeeEventsImpl employeeEventsImpl){
         if (command[POSITION].equalsIgnoreCase("CREATE")){
             new CreateOperation(command, packetEventsImpl);
 
         }
         else if (command[POSITION].equalsIgnoreCase("PUT")){
-            new PutOperation(command, packetEventsImpl);
+            new PutOperation(command, packetEventsImpl, employeeEventsImpl);
         }
         else if (command[POSITION].equalsIgnoreCase("GET")){
             new GetOperation(command, packetEventsImpl);

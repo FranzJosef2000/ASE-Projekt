@@ -50,10 +50,12 @@ public class PacketRepository implements PacketRepo {
     }
 
     @Override
-    public PacketReturn postPacket(String trackingNumber, package_state state) {
+    public PacketReturn postPacket(String trackingNumber) {
         Packet packet = getPacketByTrackinNumber(trackingNumber).getPacket();
-        packet.changeState(state);
-        if (packet.getState().equals(state)){
+        package_state formerState = packet.getState();
+        packet.changeState();
+        if (!packet.getState().equals(formerState)|| formerState.equals(package_state.ZUGESTELLT)){
+            System.out.println("Staus von Paket "+ trackingNumber+" wurde von "+formerState+" zu "+packet.getState()+" geändert!");
             return new PacketReturn(true, packet);
         } else{
             return new PacketReturn(false,null);

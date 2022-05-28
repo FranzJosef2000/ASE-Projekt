@@ -1,5 +1,6 @@
 package main.terminalhandling;
 
+import main.interfaces.EmployeeEventsImpl;
 import main.interfaces.PacketEventsImpl;
 
 import java.io.BufferedReader;
@@ -11,7 +12,7 @@ public class TerminalHandler {
     private static final String SEPERATOR = " ";
     private Thread thread;
 
-    public void terminalHandler(PacketEventsImpl packetEventsImpl) {
+    public void terminalHandler(PacketEventsImpl packetEventsImpl, EmployeeEventsImpl employeeEventsImpl) {
         thread = new Thread(() -> {
             while (!Thread.interrupted()) {
                 try {
@@ -20,7 +21,7 @@ public class TerminalHandler {
 
                     CommandSplitter commandSplitter = new CommandSplitter(line, SEPERATOR);
                     String[] command = commandSplitter.getSplittedCommand();
-                    new CommandParser().execute(command,packetEventsImpl);
+                    new CommandParser().execute(command,packetEventsImpl,employeeEventsImpl);
 
                 } catch (IOException ioException) {
                     ioException.printStackTrace();

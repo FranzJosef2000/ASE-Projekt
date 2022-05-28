@@ -37,8 +37,8 @@ public class PacketEventsImpl implements PacketEvents {
     }
 
     @Override
-    public void changeStatus(String trackingnumber, package_state state) {
-        PacketReturn packetReturn = packetRepo.postPacket(trackingnumber,state);
+    public void changeStatus(String trackingnumber) {
+        PacketReturn packetReturn = packetRepo.postPacket(trackingnumber);
         if(packetReturn.isSuccessful()){
             System.out.println("Paketstatus wurde erfolgreich geändert!");
         }

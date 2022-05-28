@@ -28,7 +28,7 @@ public class HelpOperation {
             System.out.println("GET PACKAGE <Sendeverfolgungsnummer>");
             System.out.println("--------------------------------");
             System.out.println("Packet verschieben:");
-            System.out.println("TODO:");
+            System.out.println("POST PACKAGE <Sendeverfolgungsnummer>");
             System.out.println("--------------------------------");
         }
     }

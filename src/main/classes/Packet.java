@@ -21,8 +21,11 @@ public class Packet {
         return this.id;
     }
 
-    public void changeState(package_state state){
-        this.state = state;
+    public void changeState(){
+        if (this.state.equals(package_state.ANGEKÜNDIGT))this.state=package_state.IM_LANDESVERTEILZENTRUM;
+        else if (this.state.equals(package_state.IM_LANDESVERTEILZENTRUM))this.state=package_state.IM_LOCALTENVERTEILTENTRUM;
+        else if (this.state.equals(package_state.IM_LOCALTENVERTEILTENTRUM))this.state=package_state.IN_ZUSTELLUNG;
+        else if (this.state.equals(package_state.IN_ZUSTELLUNG))this.state=package_state.ZUGESTELLT;
     }
 
     public package_state getState(){
