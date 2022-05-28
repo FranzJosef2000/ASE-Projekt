@@ -7,14 +7,11 @@ import main.terminalhandling.operations.GetOperation;
 import main.terminalhandling.operations.HelpOperation;
 import main.terminalhandling.operations.PutOperation;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class CommandParser {
-    private int POSITION = 0;
     public CommandParser() {}
 
     public void execute(String[] command, PacketEventsImpl packetEventsImpl, EmployeeEventsImpl employeeEventsImpl){
+        int POSITION = 0;
         if (command[POSITION].equalsIgnoreCase("CREATE") && command.length==3){
             new CreateOperation(command, packetEventsImpl);
 

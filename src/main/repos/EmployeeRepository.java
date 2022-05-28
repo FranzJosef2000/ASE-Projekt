@@ -13,9 +13,6 @@ public class EmployeeRepository implements EmployeeRepo{
     private void employeeMockup(){
         employeeRepository.add(new Employee("vrv81r38-6s6s-5819-9sfs-v68g1fv2620r","test123"));
         }
-    public ArrayList returnPacket(){
-        return employeeRepository;
-    }
 
     @Override
     public boolean Authorize(String id, String password) {

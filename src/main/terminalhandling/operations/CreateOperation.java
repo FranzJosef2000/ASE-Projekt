@@ -4,8 +4,6 @@ import main.classes.Address;
 import main.interfaces.PacketEvents;
 import main.interfaces.PacketEventsImpl;
 import main.package_Category;
-
-import java.util.Locale;
 import java.util.Scanner;
 
 public class CreateOperation {
@@ -25,7 +23,7 @@ public class CreateOperation {
                 System.out.println("Adressdaten des Empfängers");
                 Address receiver = addressInput();
                 boolean validReceiver = checkAddressInput(receiver);
-                if (validReceiver == true && validSender == true) {
+                if (validReceiver && validSender) {
                     create(sender, receiver, category);
                 }
             }
@@ -65,8 +63,7 @@ public class CreateOperation {
                 }
             }
         }
-        if (valid) {return true;}
-        else {return false;}
+        return valid;
     }
     private package_Category checkCategory(String input){
         try {

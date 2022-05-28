@@ -20,9 +20,6 @@ public class PacketRepository implements PacketRepo {
         packetRepository.add(new Packet("cec70e16-5a5e-4708-8ada-c57f0dc1519e",package_Category.PARCEL_M,adress,adress,package_state.ANGEKÜNDIGT));
         packetRepository.add(new Packet("cec70e16-5a5e-4708-8ada-c57f0dc1518e",package_Category.PARCEL_M,adress,adress,package_state.IN_ZUSTELLUNG));
     }
-    public ArrayList returnPacket(){
-        return packetRepository;
-    }
 
     @Override
     public PacketReturn getPacketByTrackinNumber(String trackingnumber) {
