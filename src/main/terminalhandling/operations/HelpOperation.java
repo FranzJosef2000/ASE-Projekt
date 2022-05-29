@@ -2,7 +2,7 @@ package main.terminalhandling.operations;
 
 import main.interfaces.PacketEvents;
 import main.interfaces.PacketEventsImpl;
-import main.package_Category;
+import main.enums.package_Category;
 
 public class HelpOperation {
     private PacketEvents packetEvents;

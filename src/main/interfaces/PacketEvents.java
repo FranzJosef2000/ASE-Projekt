@@ -1,7 +1,7 @@
 package main.interfaces;
 
 import main.classes.Address;
-import main.package_Category;
+import main.enums.package_Category;
 
 public interface PacketEvents {
 

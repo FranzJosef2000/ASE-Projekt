@@ -2,8 +2,8 @@ package main.repos;
 
 import main.classes.Address;
 import main.classes.Packet;
-import main.package_Category;
-import main.package_state;
+import main.enums.package_Category;
+import main.enums.package_state;
 import main.repos.returns.PacketReturn;
 import main.tools.TrackingnumberGenerator;
 
@@ -16,9 +16,10 @@ public class PacketRepository implements PacketRepo {
     packetMockup();
     }
     private void packetMockup(){
-        Address adress = new Address("","","","","","");
-        packetRepository.add(new Packet("cec70e16-5a5e-4708-8ada-c57f0dc1519e",package_Category.PARCEL_M,adress,adress,package_state.ANGEKÜNDIGT));
-        packetRepository.add(new Packet("cec70e16-5a5e-4708-8ada-c57f0dc1518e",package_Category.PARCEL_M,adress,adress,package_state.IN_ZUSTELLUNG));
+        Address address1 = new Address("Max","Mustermann","85570","Markt Schwaben","Schillerstraße","43");
+        Address address2 = new Address("Silvia","Musterfrau", "75045", "Walzbachtal", "Forstweg", "9a");
+        packetRepository.add(new Packet("cec70e16-5a5e-4708-8ada-c57f0dc1519e",package_Category.PARCEL_M,address1,address2,package_state.ANGEKÜNDIGT));
+        packetRepository.add(new Packet("cec70e16-5a5e-4708-8ada-c57f0dc1518e",package_Category.PARCEL_M,address2,address1,package_state.IN_ZUSTELLUNG));
     }
 
     @Override

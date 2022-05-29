@@ -1,4 +1,4 @@
-package main;
+package main.enums;
 
 public enum package_Category {
     PARCEL_S("Päckchen S 2 kg", "bis 45 x 25 x 10 cm", 3.79),

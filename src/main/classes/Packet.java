@@ -1,7 +1,7 @@
 package main.classes;
 
-import main.package_Category;
-import main.package_state;
+import main.enums.package_Category;
+import main.enums.package_state;
 
 public class Packet {
     String id;

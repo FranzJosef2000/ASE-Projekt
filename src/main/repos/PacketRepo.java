@@ -1,8 +1,7 @@
 package main.repos;
 
 import main.classes.Address;
-import main.package_Category;
-import main.package_state;
+import main.enums.package_Category;
 import main.repos.returns.PacketReturn;
 
 public interface PacketRepo {

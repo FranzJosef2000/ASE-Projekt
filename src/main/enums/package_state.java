@@ -1,4 +1,4 @@
-package main;
+package main.enums;
 
 public enum package_state {
 ANGEKÜNDIGT,IM_LANDESVERTEILZENTRUM, IM_LOCALTENVERTEILTENTRUM, IN_ZUSTELLUNG, ZUGESTELLT

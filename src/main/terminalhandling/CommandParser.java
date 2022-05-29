@@ -12,14 +12,15 @@ public class CommandParser {
 
     public void execute(String[] command, PacketEventsImpl packetEventsImpl, EmployeeEventsImpl employeeEventsImpl){
         int POSITION = 0;
-        if (command[POSITION].equalsIgnoreCase("CREATE") && command.length==3){
+        //command[POSITION].equalsIgnoreCase("CREATE") && command.length==3
+        if (checkOperator(command,POSITION,"CREATE",3)){
             new CreateOperation(command, packetEventsImpl);
 
         }
-        else if (command[POSITION].equalsIgnoreCase("PUT") && command.length==3){
+        else if (checkOperator(command,POSITION,"PUT",3)){
             new PutOperation(command, packetEventsImpl, employeeEventsImpl);
         }
-        else if (command[POSITION].equalsIgnoreCase("GET") && command.length==3){
+        else if (checkOperator(command,POSITION,"GET",3)){
             new GetOperation(command, packetEventsImpl);
         }
         else if (command[POSITION].equalsIgnoreCase("HELP")){
@@ -29,5 +30,8 @@ public class CommandParser {
             System.out.println("Fehlerhafte eingabe!");
             new HelpOperation(command, packetEventsImpl);
         }
+    }
+    private boolean checkOperator(String[] commands,int commandPosition, String commandCheck, int length){
+        return commands[commandPosition].equalsIgnoreCase(commandCheck) && commands.length==length;
     }
 }

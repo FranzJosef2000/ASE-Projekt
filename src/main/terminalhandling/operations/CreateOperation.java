@@ -3,7 +3,7 @@ package main.terminalhandling.operations;
 import main.classes.Address;
 import main.interfaces.PacketEvents;
 import main.interfaces.PacketEventsImpl;
-import main.package_Category;
+import main.enums.package_Category;
 import java.util.Scanner;
 
 public class CreateOperation {
