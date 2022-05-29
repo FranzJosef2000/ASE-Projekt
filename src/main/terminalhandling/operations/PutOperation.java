@@ -22,7 +22,7 @@ public class PutOperation {
 
                 if (command[2].length() == 36){
                     String trackingNumber = command[2];
-                    packetEvents.changeStatus(trackingNumber);
+                    packetEvents.changeState(trackingNumber);
                 }
                 else{
                     System.out.println("Fehlerhafte Eingabe");
