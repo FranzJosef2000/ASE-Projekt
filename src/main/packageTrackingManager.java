@@ -1,6 +1,5 @@
 package main;
 
-import main.interfaces.EmployeeEvents;
 import main.interfaces.EmployeeEventsImpl;
 import main.interfaces.PacketEventsImpl;
 import main.repos.EmployeeRepo;

@@ -16,18 +16,18 @@ public class TerminalHandler {
         thread = new Thread(() -> {
             while (!Thread.interrupted()) {
                 try {
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-                    String line = bufferedReader.readLine();
-
-                    CommandSplitter commandSplitter = new CommandSplitter(line, SEPERATOR);
+                    CommandSplitter commandSplitter = new CommandSplitter(readLine(), SEPERATOR);
                     String[] command = commandSplitter.getSplittedCommand();
                     new CommandParser().execute(command,packetEventsImpl,employeeEventsImpl);
-
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
             }
         });
         thread.start();
+    }
+    public String readLine() throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        return bufferedReader.readLine();
     }
 }
