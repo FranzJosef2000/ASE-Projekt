@@ -1,9 +1,11 @@
 package main.terminalhandling.operations;
 
 import main.classes.Address;
+import main.classes.packageCategory.PackageCategory;
+import main.classes.packageCategory.PackageCategoryFactory;
 import main.interfaces.PacketEvents;
 import main.interfaces.PacketEventsImpl;
-import main.enums.package_Category;
+
 import java.util.Scanner;
 
 public class CreateOperation {
@@ -15,7 +17,9 @@ public class CreateOperation {
         this.packetEvents = packetEventsImpl;
 
         if(command[1].equalsIgnoreCase("PACKAGE")){
-            package_Category category = checkCategory(command[2]);
+            PackageCategoryFactory factory = new PackageCategoryFactory();
+            PackageCategory category = factory.makePackageCategory(command[2]);
+
             if (category!=null) {
                 System.out.println("Adressdaten des Absenders");
                 Address sender = addressInput();
@@ -65,16 +69,8 @@ public class CreateOperation {
         }
         return valid;
     }
-    private package_Category checkCategory(String input){
-        try {
-            return package_Category.valueOf(input.toUpperCase());
-        }catch (Exception e){
-            System.out.println(e);
-            return null;
-        }
-    }
 
-    private void create(Address sender, Address receiver, package_Category category){
+    private void create(Address sender, Address receiver, PackageCategory category){
         packetEvents.createPacket(category,sender, receiver);
     }
 }

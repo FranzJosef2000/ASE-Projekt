@@ -1,8 +1,8 @@
 package main.terminalhandling.operations;
 
+import main.classes.packageCategory.*;
 import main.interfaces.PacketEvents;
 import main.interfaces.PacketEventsImpl;
-import main.enums.package_Category;
 
 public class HelpOperation {
     private PacketEvents packetEvents;
@@ -12,9 +12,12 @@ public class HelpOperation {
         this.packetEvents = packetEventsImpl;
 
         if (command[1].equalsIgnoreCase("Category")){
-           for (package_Category category : package_Category.values()){
-            System.out.println(category+": "+ category.getDescription()+"("+category.getVolumeDescription()+") | "+category.getPrice()+"€");
-           }
+           buildOutputText(new Parcel_S(),"PARCEL_S");
+           buildOutputText(new Parcel_M(),"PARCEL_M");
+           buildOutputText(new DHLPackage2Kg(),"DHLPACKAGE2KG");
+           buildOutputText(new DHLPackage5Kg(),"DHLPACKAGE5KG");
+           buildOutputText(new DHLPackage10Kg(),"DHLPACKAGE10KG");
+           buildOutputText(new DHLPackage31Kg(),"DHLPACKAGE31KG");
         }
         else {
             System.out.println("Hilfe");
@@ -31,5 +34,8 @@ public class HelpOperation {
             System.out.println("Put PACKAGE <Sendeverfolgungsnummer>");
             System.out.println("--------------------------------");
         }
+    }
+    private void buildOutputText(PackageCategory category, String name){
+        System.out.println(name+": "+ category.getDescription()+"("+category.getVolumeDescription()+") | "+category.getPrice()+"€");
     }
 }

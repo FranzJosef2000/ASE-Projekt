@@ -12,7 +12,6 @@ public class CommandParser {
 
     public void execute(String[] command, PacketEventsImpl packetEventsImpl, EmployeeEventsImpl employeeEventsImpl){
         int POSITION = 0;
-        //command[POSITION].equalsIgnoreCase("CREATE") && command.length==3
         if (checkOperator(command,POSITION,"CREATE",3)){
             new CreateOperation(command, packetEventsImpl);
 

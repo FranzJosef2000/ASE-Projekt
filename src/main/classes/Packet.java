@@ -1,16 +1,16 @@
 package main.classes;
 
-import main.enums.package_Category;
+import main.classes.packageCategory.PackageCategory;
 import main.enums.package_state;
 
 public class Packet {
     String id;
-    package_Category packageCategory;
+    PackageCategory packageCategory;
     Address sender;
     Address receiver;
     package_state state;
 
-    public Packet(String id, package_Category packageCategory, Address sender, Address receiver, package_state state) {
+    public Packet(String id, PackageCategory packageCategory, Address sender, Address receiver, package_state state) {
         this.id = id;
         this.packageCategory = packageCategory;
         this.sender = sender;

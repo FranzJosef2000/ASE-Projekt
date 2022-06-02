@@ -1,7 +1,7 @@
 package main.interfaces;
 
 import main.classes.Address;
-import main.enums.package_Category;
+import main.classes.packageCategory.PackageCategory;
 import main.repos.PacketRepo;
 import main.repos.returns.PacketReturn;
 
@@ -25,7 +25,7 @@ public class PacketEventsImpl implements PacketEvents {
     }
 
     @Override
-    public void createPacket(package_Category packageCategory, Address sender, Address receiver) {
+    public void createPacket(PackageCategory packageCategory, Address sender, Address receiver) {
         PacketReturn packetReturn = packetRepo.createPacket(packageCategory, sender, receiver);
         if (packetReturn.isSuccessful()){
             System.out.println("Paket wurde erfolgreich aufgegeben!");

@@ -2,7 +2,9 @@ package test;
 
 import main.classes.Address;
 import main.classes.Packet;
-import main.enums.package_Category;
+import main.classes.packageCategory.DHLPackage2Kg;
+import main.classes.packageCategory.Parcel_M;
+import main.classes.packageCategory.Parcel_S;
 import main.enums.package_state;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,8 +23,8 @@ public class PacketRepositoryTest {
     @BeforeEach
     public void preprocess(){
         database = new ArrayList<Packet>();
-        database.add(new Packet("cec70e16-5a5e-4708-8ada-c57f0dc1519e", package_Category.PARCEL_M,address1,address2, package_state.ANGEKÜNDIGT));
-        database.add(new Packet("cec70e16-5a5e-4708-8ada-c57f0dc1518e",package_Category.PARCEL_M,address2,address1,package_state.IN_ZUSTELLUNG));
+        database.add(new Packet("cec70e16-5a5e-4708-8ada-c57f0dc1519e", new Parcel_M(),address1,address2, package_state.ANGEKÜNDIGT));
+        database.add(new Packet("cec70e16-5a5e-4708-8ada-c57f0dc1518e",new Parcel_S(),address2,address1,package_state.IN_ZUSTELLUNG));
 
 
     }
@@ -33,13 +35,13 @@ public class PacketRepositoryTest {
     @Test
     public void addElementTest(){
         String newTrackingNumber = "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa";
-        database.add(new Packet(newTrackingNumber,package_Category.DHLPACKAGE2KG,address1,address2,package_state.IN_ZUSTELLUNG));
+        database.add(new Packet(newTrackingNumber,new DHLPackage2Kg(),address1,address2,package_state.IN_ZUSTELLUNG));
         assertNotNull(database.stream().filter(item->newTrackingNumber.equals(item.getId())).findFirst().orElse(null));
     }
 
     @Test
     public void changeValuefromElementTest(){
-        Packet packet = new Packet("cec70e16-5a5e-4708-8ada-c57f0dc1518e",package_Category.PARCEL_M,address2,address1,package_state.IN_ZUSTELLUNG);
+        Packet packet = new Packet("cec70e16-5a5e-4708-8ada-c57f0dc1518e",new Parcel_M(),address2,address1,package_state.IN_ZUSTELLUNG);
         packet.changeState();
         assertEquals(packet.getState(),package_state.ZUGESTELLT);
     }

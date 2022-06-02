@@ -2,7 +2,7 @@ package test;
 
 import main.classes.Address;
 import main.classes.Packet;
-import main.enums.package_Category;
+import main.classes.packageCategory.Parcel_M;
 import main.enums.package_state;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ public class PacketClassTest {
 
     @BeforeEach
     public void prepareTest(){
-        packet = new Packet("cec70e16-5a5e-4708-8ada-c57f0dc1519e", package_Category.PARCEL_M,address1,address2, package_state.ANGEKÜNDIGT);
+        packet = new Packet("cec70e16-5a5e-4708-8ada-c57f0dc1519e", new Parcel_M(),address1,address2, package_state.ANGEKÜNDIGT);
     }
     @Test
     public void getIdTest(){

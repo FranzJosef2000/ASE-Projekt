@@ -2,7 +2,9 @@ package main.repos;
 
 import main.classes.Address;
 import main.classes.Packet;
-import main.enums.package_Category;
+import main.classes.packageCategory.PackageCategory;
+import main.classes.packageCategory.Parcel_M;
+import main.classes.packageCategory.Parcel_S;
 import main.enums.package_state;
 import main.repos.returns.PacketReturn;
 import main.tools.TrackingnumberGenerator;
@@ -18,8 +20,8 @@ public class PacketRepository implements PacketRepo {
     private void packetMockup(){
         Address address1 = new Address("Max","Mustermann","85570","Markt Schwaben","Schillerstraße","43");
         Address address2 = new Address("Silvia","Musterfrau", "75045", "Walzbachtal", "Forstweg", "9a");
-        packetRepository.add(new Packet("cec70e16-5a5e-4708-8ada-c57f0dc1519e",package_Category.PARCEL_M,address1,address2,package_state.ANGEKÜNDIGT));
-        packetRepository.add(new Packet("cec70e16-5a5e-4708-8ada-c57f0dc1518e",package_Category.PARCEL_M,address2,address1,package_state.IN_ZUSTELLUNG));
+        packetRepository.add(new Packet("cec70e16-5a5e-4708-8ada-c57f0dc1519e",new Parcel_M(),address1,address2,package_state.ANGEKÜNDIGT));
+        packetRepository.add(new Packet("cec70e16-5a5e-4708-8ada-c57f0dc1518e",new Parcel_S(),address2,address1,package_state.IN_ZUSTELLUNG));
     }
 
     @Override
@@ -34,7 +36,7 @@ public class PacketRepository implements PacketRepo {
     }
 
     @Override
-    public PacketReturn createPacket(package_Category packageCategory, Address sender, Address receiver) {
+    public PacketReturn createPacket(PackageCategory packageCategory, Address sender, Address receiver) {
         String trackingnumber = TrackingnumberGenerator.generateTrackingNumber();
         System.out.println(trackingnumber);
         Packet createdPacket = new Packet(trackingnumber, packageCategory, sender, receiver, package_state.ANGEKÜNDIGT );
