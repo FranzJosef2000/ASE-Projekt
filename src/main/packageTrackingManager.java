@@ -10,9 +10,17 @@ import main.terminalhandling.TerminalHandler;
 
 public class packageTrackingManager {
 
+     private static packageTrackingManager packageTrackingManagerSingleton = null;
+
      public static void main(String[] args){
-          packageTrackingManager packageTrackingManager = new packageTrackingManager();
+          packageTrackingManager packageTrackingManager = main.packageTrackingManager.getSingleton();
           packageTrackingManager.start();
+     }
+     private static packageTrackingManager getSingleton(){
+     if (packageTrackingManagerSingleton == null){
+          packageTrackingManagerSingleton = new packageTrackingManager();
+     }
+     return packageTrackingManagerSingleton;
      }
      private void start(){
           PacketRepo packetRepo = new PacketRepository();
