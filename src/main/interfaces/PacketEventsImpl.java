@@ -13,36 +13,47 @@ public class PacketEventsImpl implements PacketEvents {
     }
 
     @Override
-    public void getPacket(String trackingNumber) {
+    public PacketReturn getPacket(String trackingNumber) {
         PacketReturn packetReturn = packetRepo.getPacketByTrackinNumber(trackingNumber);
         if(packetReturn.isSuccessful()){
             System.out.println("Paket wurde gefunden!");
             System.out.println("Paketstatus: "+packetReturn.getPacket().getState());
+            return new PacketReturn(true,packetReturn.getPacket());
         }
         else {
             System.out.println("Paket wurde nicht gefunden!");
+            return new PacketReturn(false,null);
         }
     }
 
     @Override
-    public void createPacket(PackageCategory packageCategory, Address sender, Address receiver) {
+    public PacketReturn createPacket(PackageCategory packageCategory, Address sender, Address receiver) {
         PacketReturn packetReturn = packetRepo.createPacket(packageCategory, sender, receiver);
         if (packetReturn.isSuccessful()){
             System.out.println("Paket wurde erfolgreich aufgegeben!");
+            return new PacketReturn(true,packetReturn.getPacket());
         }
         else {
             System.out.println("Paket konnte nicht aufgegeben werden!");
+            return new PacketReturn(false,null);
         }
     }
 
     @Override
-    public void changeState(String trackingnumber) {
-        PacketReturn packetReturn = packetRepo.putPacket(trackingnumber);
-        if(packetReturn.isSuccessful()){
-            System.out.println("Paketstatus wurde erfolgreich geändert!");
-        }
-        else {
+    public PacketReturn changeState(String trackingnumber) {
+        try{
+            PacketReturn packetReturn = packetRepo.putPacket(trackingnumber);
+            if(packetReturn.isSuccessful()){
+                System.out.println("Paketstatus wurde erfolgreich geändert!");
+                return new PacketReturn(true,packetReturn.getPacket());
+            }
+            else {
+                System.out.println("Paket status konnte nicht geändert werden!");
+                return new PacketReturn(false,null);
+            }
+        }catch (Exception e){
             System.out.println("Paket status konnte nicht geändert werden!");
+            return new PacketReturn(false,null);
         }
     }
 }
